@@ -23,16 +23,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/listings/{id}', function ($id) {
-    $listing = Listing::find($id);
-    if (!is_null($listing)) {
+Route::get('/listings/{listing}', function (Listing $listing) {
         return view('listing', [
             'listing' => $listing,
         ]);
-    } else {
-        abort(404);
-    }
-
 });
 
 
