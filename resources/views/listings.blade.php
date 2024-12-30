@@ -9,7 +9,7 @@
                <x-component-card :listing="$listing"/>
             @endforeach
         @else
-            <p>No listings found</p>
+            <p>No listings found yet</p>
         @endif
 
     </div>
