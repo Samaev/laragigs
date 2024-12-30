@@ -1,10 +1,9 @@
 @extends('layout')
 @section('content')
-    @include('partials/_search')
     @include('partials/_hero')
-    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4">
-        <h1>{{ $heading  }}</h1>
+    @include('partials/_search')
 
+    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4">
         @if(count($listings) > 0)
             @foreach($listings as $listing)
                 <div class="bg-gray-50 border border-gray-200 rounded p-6">
@@ -16,30 +15,19 @@
                         />
                         <div>
                             <h3 class="text-2xl">
-                                <a href="show.html">{{ $listing->title }}</a>
+                                <a href="/listings/{{ $listing->id}}">{{ $listing->title }}</a>
                             </h3>
                             <div class="text-xl font-bold mb-4">{{ $listing->company }}</div>
                             <ul class="flex">
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Laravel</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">API</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Backend</a>
-                                </li>
-                                <li
-                                    class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                >
-                                    <a href="#">Vue</a>
-                                </li>
+                                @foreach(explode(" ", $listing->tags) as $tag)
+                                    <li
+                                        class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
+                                    >
+                                        <a href="#">{{ $tag }}</a>
+                                    </li>
+                                @endforeach
+
+
                             </ul>
                             <div class="text-lg mt-4">
                                 <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
