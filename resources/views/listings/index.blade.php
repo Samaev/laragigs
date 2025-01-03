@@ -12,5 +12,5 @@
         @endif
 
     </div>
-</x-layout>>
+</x-layout>
 
