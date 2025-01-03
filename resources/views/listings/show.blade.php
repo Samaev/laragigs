@@ -8,11 +8,19 @@
             <div
                 class="flex flex-col items-center justify-center text-center"
             >
-                <img
-                    class="w-48 mr-6 mb-6"
-                    src="{{ asset('images/acme.png') }}"
-                    alt=""
-                />
+                @if($listing->logo)
+                    <img
+                        class="hidden w-48 mr-6 md:block"
+                        src="{{ asset('storage/'.$listing->logo) }}"
+                        alt="{{ $listing->title }}"
+                    />
+                @else
+                    <img
+                        class="hidden w-48 mr-6 md:block"
+                        src="{{asset('images/no-image.png')}}"
+                        alt="{{ $listing->title }}"
+                    />
+                @endif
 
                 <h3 class="text-2xl mb-2">{{ $listing->title }}</h3>
                 <div class="text-xl font-bold mb-4">{{ $listing->company }}</div>
