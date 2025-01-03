@@ -134,7 +134,7 @@
                     name="description"
                     rows="10"
                     placeholder="Include tasks, requirements, salary, etc"
-                ></textarea>
+                > {{ old('description') }}</textarea>
             </div>
 
             <div class="mb-6">
