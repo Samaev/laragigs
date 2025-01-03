@@ -1,11 +1,20 @@
 @props(['listing'])
 <x-card class="p-10 bg-black">
     <div class="flex">
-        <img
-            class="hidden w-48 mr-6 md:block"
-            src="{{asset('images/acme.png')}}"
-            alt=""
-        />
+        @if($listing->logo)
+            <img
+                class="hidden w-48 mr-6 md:block"
+                src="{{ asset('storage/'.$listing->logo) }}"
+                alt="{{ $listing->title }}"
+            />
+        @else
+            <img
+                class="hidden w-48 mr-6 md:block"
+                src="{{asset('images/no-image.png')}}"
+                alt="{{ $listing->title }}"
+            />
+        @endif
+
         <div>
             <h3 class="text-2xl">
                 <a href="/listings/{{ $listing->id}}">{{ $listing->title }}</a>
